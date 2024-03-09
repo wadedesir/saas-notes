@@ -64,7 +64,7 @@ export default function LandingPage() {
               {isUserLoading ? null : !user ? (
                 <Link to='/login'>
                   <div className='flex justify-end items-center duration-300 ease-in-out text-gray-900 hover:text-yellow-500 dark:text-white'>
-                    Log in <BiLogIn size='1.1rem' className='ml-1' />
+                    {/* Log in <BiLogIn size='1.1rem' className='ml-1' /> */}
                   </div>
                 </Link>
               ) : (
@@ -104,7 +104,7 @@ export default function LandingPage() {
                     </a>
                   ))}
                 </div>
-                <div className='py-6'>
+                {/* <div className='py-6'>
                   {isUserLoading ? null : !user ? (
                     <Link to='/login'>
                       <div className='flex justify-end items-center duration-300 ease-in-out text-gray-900 hover:text-yellow-500 dark:text-white'>
@@ -114,7 +114,7 @@ export default function LandingPage() {
                   ) : (
                     <UserMenuItems user={user} />
                   )}
-                </div>
+                </div> */}
               </div>
             </div>
           </Dialog.Panel>
