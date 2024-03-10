@@ -9,27 +9,15 @@ export const navigation = [
 ];
 export const features = [
   {
-    name: 'Cool Feature #1',
-    description: 'Describe your cool feature here.',
-    icon: '🤝',
+    name: 'Pin It',
+    description: 'Pin Your Important Notes',
+    icon: '📌',
     href: DOCS_URL,
   },
   {
-    name: 'Cool Feature #2',
-    description: 'Describe your cool feature here.',
-    icon: '🔐',
-    href: DOCS_URL,
-  },
-  {
-    name: 'Cool Feature #3',
-    description: 'Describe your cool feature here.',
-    icon: '🥞',
-    href: DOCS_URL,
-  },
-  {
-    name: 'Cool Feature #4',
-    description: 'Describe your cool feature here.',
-    icon: '💸',
+    name: 'Get Organized',
+    description: 'Taking notes helps you track your tasks both big and small',
+    icon: '📝',
     href: DOCS_URL,
   },
 ];
