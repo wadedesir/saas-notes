@@ -15,91 +15,23 @@ import { TiDelete } from 'react-icons/ti';
 import { type GeneratedSchedule } from '../../shared/types';
 import { MainTask, Subtask } from '../../shared/types';
 
-//custom components
-import NoteInput from '../components/NoteInput';
-import NoteContainer from '../components/NoteContainer';
-import Note from '../components/Note';
-
-const notes = [
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-]
-
 export default function DemoAppPage() {
-  const [display, setDisplay] = useState(false)
-  // const [menu, setMenu] = useState(false)
-  const [data, setData] = useState({})
-
-  const edit = (data) => {
-    setData({...data, edit:true})
-    setDisplay(true)
-  }
-
-  const stopEdit = () => {
-    setData({})
-    setDisplay(false)
-  }
   return (
     <div className='py-10 lg:mt-10'>
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
         <div className='mx-auto max-w-4xl text-center'>
           <h2 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
-            <span className='text-blue-400'>SaaS Notes</span>
+            <span className='text-yellow-500'>Simple Notes</span>
           </h2>
         </div>
         <p className='mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600 dark:text-white'>
           This app allows you to create notes that are shared across all users. You can edit your own notes and like the notes of others. 
         </p>
         {/* begin AI-powered Todo List */}
-        <div className='flex justify-end'>
-          <button
-            type='button'
-            className='min-w-[7rem] font-medium text-gray-800/90 bg-blue-200 shadow-md ring-1 ring-inset ring-slate-200 py-2 px-4 rounded-md hover:bg-white duration-200 ease-in-out focus:outline-none focus:shadow-none hover:shadow-none'
-            onClick={() => setDisplay(true)}
-         >
-            + Add New Note
-          </button>
-        </div>
         <div className='my-8 border rounded-3xl border-gray-900/10 dark:border-gray-100/10'>
-          <div className=' py-8 px-6 mx-auto'>
-            {/* <NewTaskForm handleCreateTask={createTask} /> */}
-            <NoteInput display={display} setDisplay={setDisplay} data={data} setData={setData} stopEdit={stopEdit}/>
-            <NoteContainer notes={notes} display={display} setDisplay={setDisplay} edit={edit}/>
-            {/* <ContextMenu /> */}
-            {/* <Note data={notes[0]}/> */}
+          <div className='sm:w-[90%] md:w-[70%] lg:w-[50%] py-10 px-6 mx-auto my-8 space-y-10'>
+            <NewTaskForm handleCreateTask={createTask} />
+
           </div>
         </div>
         {/* end AI-powered Todo List */}
@@ -107,18 +39,6 @@ export default function DemoAppPage() {
     </div>
   );
 }
-
-// function ContextMenu() {
-//   return (
-//   <div className="fixed rounded-lg bg-slate-600 right-0 p-3" style={{}}>
-//       <ul>
-//           <li className="">✏️ Edit</li>
-//           <li className="">🗑️ Delete</li>
-//           <li className="">✖️ Cancel</li>
-//       </ul>
-//   </div>
-//   )
-// }
 
 type TodoProps = Pick<Task, 'id' | 'isDone' | 'description' | 'time'>;
 
