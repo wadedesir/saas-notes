@@ -3,7 +3,7 @@ import daBoiAvatar from '../static/da-boi.png';
 import avatarPlaceholder from '../static/avatar-placeholder.png';
 
 export const navigation = [
-  { name: 'Notes', href: '#features' },
+  { name: 'Notes', href: '/demo-app' },
   { name: 'Sign-Up', href: '/signup' },
   { name: 'Log-In', href: '/login' },
 ];
