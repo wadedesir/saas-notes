@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Note({data, setDisplay, edit}) {
+export default function Note({data, edit}) {
     /*
   {
     Name: 'Test Note',

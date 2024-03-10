@@ -12,7 +12,7 @@ export default function NoteInput({display, stopEdit, data}) {
         <div className={`fixed w-full h-full left-0 top-0 z-50 ${display ? 'flex' : 'hidden' } flex-col justify-center items-center`} style={{backgroundColor: 'rgba(0, 0, 0, 0.8)'}} >
             
             <div className="w-150">
-                {editing ? <input className="text-white w-150 bg-transparent rounded-lg mb-4" value={data.name} placeholder="Note Title"/> : <input className="text-white w-150 bg-transparent rounded-lg mb-4" placeholder="Note Title"/>}
+                {editing ? <input className="text-white w-150 bg-transparent rounded-lg mb-4" value={data.name} placeholder="Note Title"/> : <input className="text-white w-150 bg-transparent rounded-lg mb-4" placeholder="Note Title" value='' />}
             </div>
             <div>
                 <textarea 
