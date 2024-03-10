@@ -96,7 +96,7 @@ export default function DemoAppPage() {
         <div className='my-8 border rounded-3xl border-gray-900/10 dark:border-gray-100/10'>
           <div className=' py-8 px-6 mx-auto'>
             {/* <NewTaskForm handleCreateTask={createTask} /> */}
-            <NoteInput display={display} setDisplay={setDisplay} data={data} setData={setData} stopEdit={stopEdit}/>
+            <NoteInput display={display} data={data} stopEdit={stopEdit}/>
             <NoteContainer notes={notes} display={display} setDisplay={setDisplay} edit={edit}/>
             {/* <ContextMenu /> */}
             {/* <Note data={notes[0]}/> */}
