@@ -12,11 +12,13 @@ import DarkModeSwitcher from '../admin/components/DarkModeSwitcher';
 import { UserMenuItems } from '../components/UserMenuItems';
 
 const navigation = [
-  { name: 'AI Scheduler (Demo App)', href: '/demo-app' },
-  { name: 'File Upload (AWS S3)', href: '/file-upload' },
-  { name: 'Pricing', href: '/pricing' },
-  { name: 'Documentation', href: DOCS_URL },
-  { name: 'Blog', href: BLOG_URL },
+  {name: 'Home', href:'/'},
+  { name: 'Notes', href: '/demo-app' },
+  // { name: 'Log-Out', href: '/' },
+  // { name: 'File Upload (AWS S3)', href: '/file-upload' },
+  // { name: 'Pricing', href: '/pricing' },
+  // { name: 'Documentation', href: DOCS_URL },
+  // { name: 'Blog', href: BLOG_URL },
 ];
 
 const NavLogo = () => <img className='h-8 w-8' src={logo} alt='Your SaaS App' />;
@@ -26,7 +28,7 @@ export default function AppNavBar() {
 
   const { data: user, isLoading: isUserLoading } = useAuth();
   return (
-    <header className='absolute inset-x-0 top-0 z-50 shadow sticky bg-white bg-opacity-50 backdrop-blur-lg backdrop-filter dark:border dark:border-gray-100/10 dark:bg-boxdark-2'>
+    <header className='absolute inset-x-0 top-0 z-40 shadow sticky bg-white bg-opacity-50 backdrop-blur-lg backdrop-filter dark:border dark:border-gray-100/10 dark:bg-boxdark-2'>
       <nav className='flex items-center justify-between p-6 lg:px-8' aria-label='Global'>
         <div className='flex lg:flex-1'>
           <a href='/' className='-m-1.5 p-1.5'>
