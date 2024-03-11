@@ -1,4 +1,4 @@
-import { type User, type Task, type File } from 'wasp/entities';
+import { type User, type Task, type File, type Note } from 'wasp/entities';
 import { HttpError } from 'wasp/server';
 import {
   type GenerateGptResponse,
@@ -9,6 +9,9 @@ import {
   type DeleteTask,
   type UpdateTask,
   type CreateFile,
+  type CreateNote,
+  type UpdateNote,
+  type DeleteNote,
 } from 'wasp/server/operations';
 import Stripe from 'stripe';
 import type { GeneratedSchedule, StripePaymentResult } from '../shared/types';
@@ -334,3 +337,39 @@ export const updateCurrentUser: UpdateCurrentUser<Partial<User>, User> = async (
     data: user,
   });
 };
+
+
+type CreateNotePayload = {
+  content: string,
+  title: string
+}
+
+export const createNote: CreateNote<CreateNotePayload, Note> = async (args, context) => {
+  return context.entities.Note.create({
+    data: args,
+  })
+}
+
+type UpdateNotePayload = Pick<Note, 'id' | 'content' | 'title'>
+
+export const updateNote: UpdateNote<UpdateNotePayload, Note> = async ({ id, content, title}, context) => {
+  return context.entities.Note.update({
+    where: { id },
+    data: {
+      content: content,
+      title: title,
+    },
+  })
+}
+
+type DeleteNotePayload = Pick<Note, 'id'>
+
+export const deleteNote: DeleteNote<DeleteNotePayload, Note> = async ({id}, context) => {
+  const note = await context.entities.Note.delete({
+    where: {
+      id,
+    },
+  });
+
+  return note;
+}
