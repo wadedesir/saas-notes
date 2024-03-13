@@ -1,3 +1,4 @@
+
 import { Link } from 'wasp/client/router';
 import { useAuth } from 'wasp/client/auth';
 import { useState } from 'react';
@@ -23,7 +24,7 @@ export default function LandingPage() {
   return (
     <div className='bg-white dark:text-white dark:bg-boxdark-2'>
       {/* Header */}
-      <header className='absolute inset-x-0 top-0 z-50 dark:bg-boxdark-2'>
+     <header className='absolute inset-x-0 top-0 z-50 dark:bg-boxdark-2'>
         <nav className='flex items-center justify-between p-6 lg:px-8' aria-label='Global'>
           <div className='flex items-center lg:flex-1'>
             <a
@@ -150,10 +151,10 @@ export default function LandingPage() {
             <div className='mx-auto max-w-8xl px-6 lg:px-8'>
               <div className='lg:mb-18 mx-auto max-w-3xl text-center'>
                 <h1 className='text-4xl font-bold text-gray-900 sm:text-6xl dark:text-white'>
-                  Some <span className='italic'>cool</span> words about your product
+                  Your <span className='italic'>notetaking</span> app
                 </h1>
                 <p className='mt-6 mx-auto max-w-2xl text-lg leading-8 text-gray-600 dark:text-white'>
-                  With some more exciting words about your product!
+                  everything you need to be productive
                 </p>
                 <div className='mt-10 flex items-center justify-center gap-x-6'>
                   <a
@@ -164,7 +165,34 @@ export default function LandingPage() {
                   </a>
                 </div>
               </div>
-              <div className='mt-14 flow-root sm:mt-14 '>
+              {/* Feature section */}
+        <div id='features' className='mx-auto mt-48 max-w-7xl px-6 lg:px-8'>
+          <div className='mx-auto max-w-2xl text-center'>
+            <p className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
+              The <span className='text-yellow-500'>Best</span> Features
+            </p>
+            <p className='mt-6 text-lg leading-8 text-gray-600 dark:text-white'>
+              Don't work harder.
+              <br /> Work smarter.
+            </p>
+          </div>
+          <div className='mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl'>
+            <dl className='grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16'>
+              {features.map((feature) => (
+                <div key={feature.name} className={`relative pl-16`}>
+                  <dt className='text-base font-semibold leading-7 text-gray-900 dark:text-white'>
+                    <div className='absolute left-0 top-0 flex h-10 w-10 items-center justify-center border border-yellow-400 bg-yellow-100/50 dark:bg-boxdark rounded-lg'>
+                      <div className='text-2xl'>{feature.icon}</div>
+                    </div>
+                    {feature.name}
+                  </dt>
+                  <dd className='mt-2 text-base leading-7 text-gray-600 dark:text-white'>{feature.description}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+              {/* <div className='mt-14 flow-root sm:mt-14 '>
                 <div className='-m-2 rounded-xl  lg:-m-4 lg:rounded-2xl lg:p-4'>
                   <img
                     src={openSaasBanner}
@@ -174,13 +202,13 @@ export default function LandingPage() {
                     className='rounded-md shadow-2xl ring-1 ring-gray-900/10'
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
 
         {/* Clients section */}
-        <div className='mt-12 mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-between gap-y-6'>
+        {/* <div className='mt-12 mx-auto max-w-7xl px-6 lg:px-8 flex flex-col items-between gap-y-6'>
           <h2 className='mb-6 text-center font-semibold tracking-wide text-gray-500 dark:text-white'>
             Built with / Used by:
           </h2>
@@ -244,38 +272,12 @@ export default function LandingPage() {
               </svg>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        {/* Feature section */}
-        <div id='features' className='mx-auto mt-48 max-w-7xl px-6 lg:px-8'>
-          <div className='mx-auto max-w-2xl text-center'>
-            <p className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
-              The <span className='text-yellow-500'>Best</span> Features
-            </p>
-            <p className='mt-6 text-lg leading-8 text-gray-600 dark:text-white'>
-              Don't work harder.
-              <br /> Work smarter.
-            </p>
-          </div>
-          <div className='mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl'>
-            <dl className='grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16'>
-              {features.map((feature) => (
-                <div key={feature.name} className={`relative pl-16`}>
-                  <dt className='text-base font-semibold leading-7 text-gray-900 dark:text-white'>
-                    <div className='absolute left-0 top-0 flex h-10 w-10 items-center justify-center border border-yellow-400 bg-yellow-100/50 dark:bg-boxdark rounded-lg'>
-                      <div className='text-2xl'>{feature.icon}</div>
-                    </div>
-                    {feature.name}
-                  </dt>
-                  <dd className='mt-2 text-base leading-7 text-gray-600 dark:text-white'>{feature.description}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
+        
 
         {/* Testimonial section */}
-        <div className='mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8'>
+        {/* <div className='mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8'>
           <div className='relative sm:left-5 -m-2 rounded-xl bg-yellow-400/20 lg:ring-1 lg:ring-yellow-500/50 lg:-m-4 '>
             <div className='relative sm:top-5 sm:right-5 bg-gray-900 dark:bg-boxdark px-8 py-20 shadow-xl sm:rounded-xl sm:px-10 sm:py-16 md:px-12 lg:px-20'>
               <h2 className='text-left text-xl font-semibold tracking-wide leading-7 text-gray-500 dark:text-white'>
@@ -301,10 +303,10 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* FAQ */}
-        <div className='mt-32 mx-auto max-w-2xl divide-y divide-gray-900/10 dark:divide-gray-200/10 px-6 pb-8 sm:pb-24 sm:pt-12 lg:max-w-7xl lg:px-8 lg:py-32'>
+        {/* <div className='mt-32 mx-auto max-w-2xl divide-y divide-gray-900/10 dark:divide-gray-200/10 px-6 pb-8 sm:pb-24 sm:pt-12 lg:max-w-7xl lg:px-8 lg:py-32'>
           <h2 className='text-2xl font-bold leading-10 tracking-tight text-gray-900 dark:text-white'>
             Frequently asked questions
           </h2>
@@ -325,7 +327,7 @@ export default function LandingPage() {
               </div>
             ))}
           </dl>
-        </div>
+        </div> */}
       </main>
 
       {/* Footer */}
@@ -368,3 +370,4 @@ export default function LandingPage() {
     </div>
   );
 }
+

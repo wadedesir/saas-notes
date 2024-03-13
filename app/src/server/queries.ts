@@ -1,4 +1,12 @@
-import { type DailyStats, type GptResponse, type User, type PageViewSource, type Task, type File } from 'wasp/entities';
+import { 
+  type DailyStats, 
+  type GptResponse, 
+  type User, 
+  type PageViewSource, 
+  type Task, 
+  type File,
+  type Note,
+} from 'wasp/entities';
 import { HttpError } from 'wasp/server';
 import {
   type GetGptResponses,
@@ -7,6 +15,7 @@ import {
   type GetAllTasksByUser,
   type GetAllFilesByUser,
   type GetDownloadFileSignedURL,
+  type GetNotes,
 } from 'wasp/server/operations';
 import { getDownloadFileSignedURLFromS3 } from './file-upload/s3Utils.js';
 
@@ -164,3 +173,9 @@ export const getPaginatedUsers: GetPaginatedUsers<GetPaginatedUsersInput, GetPag
     totalPages,
   };
 };
+
+export const getNotes: GetNotes<void, Note[]> = async (args, context) => {
+  return context.entities.Note.findMany({
+    orderBy: { id: 'asc' },
+  })
+}

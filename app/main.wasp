@@ -171,6 +171,14 @@ entity Logs {=psl
   level                    String
 psl=}
 
+// DEMO NOTE APP
+entity Note {=psl
+  id          Int             @id @default(autoincrement())
+  title       String
+  content     String
+  createdAt   DateTime        @default(now())
+psl=}
+
 /* 📡 These are the Wasp Routes (You can protect them easily w/ 'authRequired: true');
  * https://wasp-lang.dev/docs/tutorial/pages
  */
@@ -340,6 +348,20 @@ action createFile {
   entities: [User, File]
 }
 
+action createNote {
+  fn: import { createNote } from "@src/server/actions.js",
+  entities: [Note]
+}
+
+action updateNote {
+  fn: import { updateNote } from "@src/server/actions.js",
+  entities: [Note]
+}
+
+action deleteNote {
+  fn: import { deleteNote } from "@src/server/actions.js",
+  entities: [Note]
+}
 
 // 📚 Queries
 
@@ -371,6 +393,12 @@ query getDailyStats {
 query getPaginatedUsers {
   fn: import { getPaginatedUsers } from "@src/server/queries.js",
   entities: [User]
+}
+
+// NOTE DEMO APP
+query getNotes {
+  fn: import { getNotes } from "@src/server/queries.js",
+  entities: [Note]
 }
 
 /*
