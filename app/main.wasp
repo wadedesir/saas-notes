@@ -176,6 +176,7 @@ entity Note {=psl
   id          Int             @id @default(autoincrement())
   title       String
   content     String
+  like        Int             @default(0)
   createdAt   DateTime        @default(now())
 psl=}
 

@@ -11,7 +11,7 @@ import {
   getNotes
 } from 'wasp/client/operations';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, SetStateAction } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import { TiDelete } from 'react-icons/ti';
 import { type GeneratedSchedule } from '../../shared/types';
@@ -33,7 +33,7 @@ export default function DemoAppPage() {
   const {data : notedata} = useQuery(getNotes)
   // console.log(notex)
 
-  const edit = (editData) => {
+  const edit = (editData: SetStateAction<{}>) => {
     setData({...editData, edit: true})
     setDisplay(true)
   }

@@ -30,7 +30,7 @@ export default function Note({data, edit}) {
             <p className="font-thin mb-3  text-slate-400">{data.content}</p>
             <p className="w-full flex justify-between  text-slate-400 dark:text-white">
                     <span className="text-sm text-slate-600 dark:text-white">Author: <span className="font-thin text-xs">{'no author'}</span></span> 
-                    <span>{0} Likes</span>
+                    <span>{data.like} Likes</span>
             </p>
             
         </div>
