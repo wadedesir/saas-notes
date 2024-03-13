@@ -1,4 +1,5 @@
 import { type Task } from 'wasp/entities';
+// import { getNotes } from 'wasp/client/operations';
 
 import {
   generateGptResponse,
@@ -7,9 +8,10 @@ import {
   createTask,
   useQuery,
   getAllTasksByUser,
+  getNotes
 } from 'wasp/client/operations';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import { TiDelete } from 'react-icons/ti';
 import { type GeneratedSchedule } from '../../shared/types';
@@ -20,51 +22,19 @@ import NoteInput from '../components/NoteInput';
 import NoteContainer from '../components/NoteContainer';
 import Note from '../components/Note';
 
-const notes = [
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-  {
-    name: 'Test Note',
-    content: 'this is a test note for our compponent',
-    author: 'Wade Desir',
-    date: '10/1/2023',
-    likes: 10
-  },
-]
-
 export default function DemoAppPage() {
   const [display, setDisplay] = useState(false)
   // const [menu, setMenu] = useState(false)
   const [data, setData] = useState({})
+  // useEffect(() => {
+  // }, [])
 
-  const edit = (data) => {
-    setData({...data, edit:true})
+
+  const {data : notedata} = useQuery(getNotes)
+  // console.log(notex)
+
+  const edit = (editData) => {
+    setData({...editData, edit: true})
     setDisplay(true)
   }
 
@@ -97,7 +67,7 @@ export default function DemoAppPage() {
           <div className=' py-8 px-6 mx-auto'>
             {/* <NewTaskForm handleCreateTask={createTask} /> */}
             <NoteInput display={display} data={data} stopEdit={stopEdit}/>
-            <NoteContainer notes={notes} display={display} setDisplay={setDisplay} edit={edit}/>
+            {notedata && <NoteContainer notes={notedata} display={display} setDisplay={setDisplay} edit={edit}/>}
             {/* <ContextMenu /> */}
             {/* <Note data={notes[0]}/> */}
           </div>
