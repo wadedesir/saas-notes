@@ -1,5 +1,6 @@
 import { useState } from "react"
-// import { deleteNote } from "wasp/server/operations"
+import { deleteNote } from "wasp/client/operations"
+
 
 export default function Note({data, edit}) {
     /*
@@ -41,8 +42,7 @@ function ContextMenu({id, menu, setMenu, pos, data, edit}) {
     
     const removeNote = async (id) => {
         try{
-            // await deleteNote({ id })
-            console.log('deleting')
+            await deleteNote(id)
         }catch(err){
             console.log(err)
         }
@@ -56,7 +56,10 @@ function ContextMenu({id, menu, setMenu, pos, data, edit}) {
                 setMenu(false)
             }} className="hover:text-blue-400">✏️ Edit</li>
             <li 
-                onClick={() => removeNote(id)}
+                onClick={() => {
+                removeNote({id})
+                setMenu(false)
+            }}
                 className="hover:text-red-500">
                     🗑️ Delete
             </li>
