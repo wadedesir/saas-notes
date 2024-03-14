@@ -11,6 +11,7 @@ import {
   type CreateFile,
   type CreateNote,
   type UpdateNote,
+  type LikeNote,
   type DeleteNote,
 } from 'wasp/server/operations';
 import Stripe from 'stripe';
@@ -341,7 +342,8 @@ export const updateCurrentUser: UpdateCurrentUser<Partial<User>, User> = async (
 
 type CreateNotePayload = {
   content: string,
-  title: string
+  title: string,
+  like: number
 }
 
 export const createNote: CreateNote<CreateNotePayload, Note> = async (args, context) => {
@@ -358,6 +360,17 @@ export const updateNote: UpdateNote<UpdateNotePayload, Note> = async ({ id, cont
     data: {
       content: content,
       title: title,
+    },
+  })
+}
+
+type LikeNotePayload = Pick<Note, 'id' |'like'>
+
+export const likeNote: LikeNote<LikeNotePayload, Note> = async ({ id, like}, context) => {
+  return context.entities.Note.update({
+    where: { id },
+    data: {
+      like: like
     },
   })
 }

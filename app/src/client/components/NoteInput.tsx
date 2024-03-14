@@ -23,7 +23,7 @@ export default function NoteInput({display, stopEdit, data}) {
         setContent('')
         setName('')
         if(!editing){
-            const ret = await createNote({content: newContent, title: newTitle})
+            const ret = await createNote({content: newContent, title: newTitle, like: 0})
             return
         }else{
             const ret = await updateNote({id: data.id, content: newContent, title: newTitle})
