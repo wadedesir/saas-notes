@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { deleteNote } from "wasp/client/operations"
+import { likeNote } from "wasp/client/operations"
 
 export default function Note({data, edit}) {
     const id = data.id
     const [menu, setMenu] = useState(false)
     const [pos, setPos] = useState([0,0])
-    const [likes, setLikes] = useState(data.likes || 0); 
+    const [like, setLikes] = useState(data.likes || 0); 
 
     const showMenu = (e) => {
         setPos([e.clientY, e.clientX])
@@ -13,7 +14,8 @@ export default function Note({data, edit}) {
     }
 
     const handleLike = () => {
-        setLikes(likes + 1); 
+        setLikes(like + 1); 
+        likeNote({id, like})
     };
 
 
@@ -29,7 +31,7 @@ export default function Note({data, edit}) {
                     <span className="text-sm text-slate-600 dark:text-white">Author: <span className="font-thin text-xs">{'no author'}</span></span> 
                     {/* <span>{data.like} Likes</span> */}
                     <span>
-                    {likes} Likes 
+                    {like} Likes 
                     <button onClick={handleLike} className="ml-2 text-blue-500 dark:text-blue-500 hover:underline focus:outline-none">Like</button>
                 </span>
                     
