@@ -1,24 +1,21 @@
 import { useState } from "react"
-// import { deleteNote } from "wasp/server/operations"
+import { deleteNote } from "wasp/client/operations"
 
 export default function Note({data, edit}) {
-    /*
-  {
-    Name: 'Test Note',
-    Content: 'this is a test note for our compponent',
-    Author: 'Wade Desir',
-    Date: '10/1/2023',
-    Likes: 10
-  },
-    */
     const id = data.id
     const [menu, setMenu] = useState(false)
     const [pos, setPos] = useState([0,0])
-  
+    const [likes, setLikes] = useState(data.likes || 0); 
+
     const showMenu = (e) => {
         setPos([e.clientY, e.clientX])
         setMenu(true)
     }
+
+    const handleLike = () => {
+        setLikes(likes + 1); 
+    };
+
 
     return (
         <div className="w-full bg-blue-50 border-blue-200 dark:bg-gray-800 rounded-lg p-3 border-2 dark:border-gray-700 mb-3">
@@ -30,7 +27,12 @@ export default function Note({data, edit}) {
             <p className="font-thin mb-3  text-slate-400">{data.content}</p>
             <p className="w-full flex justify-between  text-slate-400 dark:text-white">
                     <span className="text-sm text-slate-600 dark:text-white">Author: <span className="font-thin text-xs">{'no author'}</span></span> 
-                    <span>{data.like} Likes</span>
+                    {/* <span>{data.like} Likes</span> */}
+                    <span>
+                    {likes} Likes 
+                    <button onClick={handleLike} className="ml-2 text-blue-500 dark:text-blue-500 hover:underline focus:outline-none">Like</button>
+                </span>
+                    
             </p>
             
         </div>
@@ -41,7 +43,7 @@ function ContextMenu({id, menu, setMenu, pos, data, edit}) {
     
     const removeNote = async (id) => {
         try{
-            // await deleteNote({ id })
+            await deleteNote({ id })
             console.log('deleting')
         }catch(err){
             console.log(err)
@@ -56,7 +58,10 @@ function ContextMenu({id, menu, setMenu, pos, data, edit}) {
                 setMenu(false)
             }} className="hover:text-blue-400">✏️ Edit</li>
             <li 
-                onClick={() => removeNote(id)}
+                onClick={() => {
+                    removeNote(id)
+                    setMenu(false)}
+                }
                 className="hover:text-red-500">
                     🗑️ Delete
             </li>
